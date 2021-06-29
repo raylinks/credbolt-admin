@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProcessLoanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +16,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::view('/dashboard', 'admin.index')->name('dashboard');
+
+Route::prefix('loan')->name('loan.')->group(function () {
+    Route::get('/', [ProcessLoanController::class, 'index'])->name('index');
 });
