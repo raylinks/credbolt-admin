@@ -9,6 +9,8 @@ class LoanRequest extends Model
 {
     use HasFactory;
 
+    protected $connection = 'credbolt_api';
+
     public const STATUSES = [
         'PENDING' => 'pending',
         'INITIATED' => 'initiated',

@@ -11,9 +11,9 @@ class ProcessLoanController extends Controller
 {
     public function index()
     {
-        $pending = LoanRequest::where('status', LoanRequest::STATUSES['PENDING'])->get();
+        $pendingLoans = LoanRequest::where('status', LoanRequest::STATUSES['PENDING'])->get();
 
-        return view('admin.loan-requests.index', compact('pending'));
+        return view('admin.loan-requests.index', compact('pendingLoans'));
     }
 
     public function processLoan(Transaction $transaction)

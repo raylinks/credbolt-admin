@@ -8,7 +8,7 @@
 
     <div class="navbar-collapse collapse" id="navbar-footer">
         <span class="navbar-text">
-            &copy; {{ date('Y') }} Lifdoc
+            &copy; {{ date('Y') }} CredBolt
         </span>
     </div>
 </div>
