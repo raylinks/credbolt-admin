@@ -1,18 +1,29 @@
 <?php
 
-namespace App\Http\Clients;
+namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Http\Clients\Monnify;
 use App\Http\Controllers\Controller;
+use App\Http\Actions\DisbursementAction;
+use App\Http\Clients\MonnifyAuthRequest;
 use App\Http\Requests\DisbursementRequest;
 
-class Disbursement extends Controller
+class DisbursementController extends Controller
 {
-    public function initiate(DisbursementRequest $request)
+    public function initiate(Request $request)
     {
         $requestData = $request->only(['amount', 'narration',
          'destination_bank_code' ,'destination_account_number', 'currency', 'source_account_number']);
-
-         $response = (new Monnify())->initiateDisburse($requestData);
+      //  dd($requestData);
+        //$result = (new Monnify())->initiateDisburse($customerData);
+        $response = (new DisbursementAction())->execute($requestData);
     }
+
+    public function auth()
+    {
+        $response = (new MonnifyAuthRequest())->token();
+        dd($response);
+    }
+
 }

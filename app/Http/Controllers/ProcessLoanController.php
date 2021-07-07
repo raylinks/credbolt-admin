@@ -12,7 +12,7 @@ class ProcessLoanController extends Controller
     public function index()
     {
         $pendingLoans = LoanRequest::where('status', LoanRequest::STATUSES['PENDING'])->get();
-
+        dd($pendingLoans);
         return view('admin.loan-requests.index', compact('pendingLoans'));
     }
 

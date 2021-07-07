@@ -18,16 +18,18 @@ class Monnify
 
     public function __construct()
     {
-        $this->client = Http::withHeaders(['Authorization' =>   'Bearer'  .  $this->token])
+        //dd(new MonnifyAuthRequest())->token();
+        $this->client = Http::withHeaders(['Authorization' =>   'Bearer'  .  $this->token()])
             ->baseUrl(config('monnify.base_url'));
     }
 
-    public function initiateDisburse($customerData)
+    public function initiateDisburse(array $customerData)
     {
-        $ref = $this->generateRef();
+        //$ref = $this->generateRef();
+        $reference = md5(Str::random(20));
         try {
             $data = [
-                'reference' => $ref,
+                'reference' => $reference,
                 'amount' => $customerData['amount'],
                 'narration' => $customerData['narration'],
                 'destinationBankCode' => $customerData['destination_bank_code'],
@@ -37,7 +39,8 @@ class Monnify
 
             ];
 
-            return  $this->client->post('/v2/disbursements/single', $data)->throw()->json();
+            $res =  $this->client->post('/v2/disbursements/single', $data)->throw()->json();
+            dd($res);
         } catch (Throwable $e) {
     
             $this->handleException($e);
@@ -45,19 +48,25 @@ class Monnify
     }
 
 
-    public function generateRef()
+    public function token()
     {
-        $ref = time() . '_' . uniqid();
-
-        // Ensure that the reference has not been used previously
-        $validator = \Validator::make(['ref' => $ref], ['ref' => 'unique:payment_references,reference']);
-
-        if ($validator->fails()) {
-            return $this->generateRef();
-        }
-
-        return $ref;
+        $res = (new MonnifyAuthRequest())->token();
+        return $res;
     }
+
+    // public function generateRef()
+    // {
+    //     $ref = time() . '_' . uniqid();
+
+    //     // Ensure that the reference has not been used previously
+    //     $validator = \Validator::make(['ref' => $ref], ['ref' => 'unique:payment_references,reference']);
+
+    //     if ($validator->fails()) {
+    //         return $this->generateRef();
+    //     }
+
+    //     return $ref;
+    // }
 
     private function handleException(Exception $exception, ?string $message = null)
     {
