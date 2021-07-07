@@ -14,8 +14,9 @@ class MonnifyAuthRequest
 
     public function __construct()
     {
+        //  "Basic TUtfVEVTVF8yM0hKVUNWREpOOllCQVRLSFY3Q0NSUEZBUjU4VzJES042MkFNODRYMlA5" 
         //dd($this->getEncodedAuth());
-        $this->client = Http::withHeaders(['Authorization' => "Basic TUtfVEVTVF8yM0hKVUNWREpOOllCQVRLSFY3Q0NSUEZBUjU4VzJES042MkFNODRYMlA5" ])
+        $this->client = Http::withHeaders(['Authorization' => "Basic TUtfVEVTVF8yM0hKVUNWREpOOllCQVRLSFY3Q0NSUEZBUjU4VzJES042MkFNODRYMlA5" ]) //$this->getEncodedAuth();
             ->baseUrl(config('monnify.base_url'));
     }
 
