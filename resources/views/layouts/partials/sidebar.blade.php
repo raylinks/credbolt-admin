@@ -49,7 +49,29 @@
                 
                 <li class="nav-item nav-item-submenu">
                     <a href="" class="nav-link" id="business">
+                        <i class="icon-briefcase"></i> <span>Customers</span>
+                    </a>
+
+                    <ul class="nav nav-group-sub" data-submenu-title="Businesses">
+                        <li class="nav-item">
+                              <a href="{{ route('customer.index')}}" class="nav-link">View users</a> 
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item nav-item-submenu">
+                    <a href="" class="nav-link" id="business">
                         <i class="icon-briefcase"></i> <span>Loan requests</span>
+                    </a>
+
+                    <ul class="nav nav-group-sub" data-submenu-title="Businesses">
+                        <li class="nav-item">
+                              <a href="{{ route('loan.index')}}" class="nav-link">View loans</a> 
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item nav-item-submenu">
+                    <a href="" class="nav-link" id="business">
+                        <i class="icon-briefcase"></i> <span>Transactions</span>
                     </a>
 
                     <ul class="nav nav-group-sub" data-submenu-title="Businesses">

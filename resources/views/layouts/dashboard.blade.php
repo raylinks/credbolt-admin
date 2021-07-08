@@ -62,6 +62,7 @@
                 <!-- /Validation errors -->
 
                 <!-- @yield('content') -->
+                @yield('content')
             </div>
             <!-- /content area -->
 

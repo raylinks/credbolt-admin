@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProcessLoanController;
@@ -33,6 +34,9 @@ Route::middleware('auth')->group(function () {
 
 
 
+    Route::prefix('customer')->name('customer.')->group(function () {
+    Route::get('/registered/users', [UserController::class, 'index'])->name('index');
+    });
 
 Route::prefix('loan')->name('loan.')->group(function () {
     Route::get('/', [ProcessLoanController::class, 'index'])->name('index');
