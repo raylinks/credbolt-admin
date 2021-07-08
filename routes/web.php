@@ -18,7 +18,7 @@ use App\Http\Controllers\ProcessLoanController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 //Route::view('/dashboard', 'admin.index')->name('dashboard');
