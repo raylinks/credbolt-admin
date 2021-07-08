@@ -9,7 +9,9 @@ class LoanRequest extends Model
 {
     use HasFactory;
 
-    protected $connection = 'credbolt_api';
+   // protected $connection = 'credbolt_api';
+
+    protected $connection =  'credapidb';
 
     public const STATUSES = [
         'PENDING' => 'pending',
