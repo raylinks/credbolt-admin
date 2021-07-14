@@ -27,6 +27,9 @@ class Permission extends SpatiePermission
     public const AGENT = 'operations';
     public const MANAGE_OPERATE = 'manage-operations';
     public const ACCOUNTING = 'accounting';
+    public const BLACKLIST_CUSTOMER = 'blacklist-customer';
+    public const REFUND_TRANSACTION = 'refund-transaction';
+    public const UPDATE_PREFERENCES = 'update-preferences';
   
 
 

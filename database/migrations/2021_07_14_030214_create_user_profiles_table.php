@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLoanRequestsTable extends Migration
+class CreateUserProfilesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class CreateLoanRequestsTable extends Migration
      */
     public function up()
     {
-        Schema::create('loan_requests', function (Blueprint $table) {
+        Schema::create('user_profiles', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->nullable()->constrained('users');
+            $roles_table = config('permission.table_names.roles');
+            $table->foreignId('role_id')->nullable()->constrained($roles_table);
             $table->timestamps();
         });
     }
@@ -26,6 +29,6 @@ class CreateLoanRequestsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('loan_requests');
+        Schema::dropIfExists('user_profiles');
     }
 }

@@ -26,24 +26,9 @@ class CreateUsersTable extends Migration
             $table->softDeletes();
             $table->timestamps();
         });
-        $this->seed();
     }
 
-    private function seed()
-    {
-        DB::transaction(function () {
-            $now = now()->toDateTimeString();
-
-            // Create User
-            DB::table('users')->insert([
-                'username' => env('ADMIN_USERNAME', 'admin'),
-                'email' => env('ADMIN_EMAIL', 'admin@gmail.com'),
-                'password' => Hash::make('password'),
-                'created_at' => $now,
-                'updated_at' => $now,
-            ]);
-        });
-    }
+   
 
     /**
      * Reverse the migrations.
