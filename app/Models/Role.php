@@ -8,7 +8,7 @@ class Role extends SpatieRole
 {
     protected $guarded = [];
 
-    protected $guard_name = 'api';
+    protected $guard_name = 'admin';
 
     public const ADMIN = 'admin';
     public const CEO = 'ceo';

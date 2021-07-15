@@ -1,14 +1,14 @@
 @extends('layouts.dashboard')
 
-@section('title', 'Loan requests')
+@section('title', 'Transactions')
 
-@section('header', 'Loan Requests')
+@section('header', 'Transactions')
 
 @section('page-title')
     <div class="page-header">
         <div class="page-header-content header-elements-md-inline">
             <div class="page-title d-flex">
-                <h2 class="font-weight-semibold">Loan Requests</h2>
+                <h2 class="font-weight-semibold">All Transactions</h2>
             </div>
         </div>
     </div>
@@ -21,7 +21,7 @@
                 <a href="{{ route('home') }}" class="breadcrumb-item">
                     <i class="icon-home2 mr-2"></i> Home
                 </a>
-                <span class="breadcrumb-item active">Loan Requests</span>
+                <span class="breadcrumb-item active">Transactions</span>
             </div>
         </div>
     </div>
@@ -34,31 +34,23 @@
                 <table class="table datatable-basic table-hover">
                     <thead>
                     <tr>
-                        <th>Fullname</th>
-                        <th>Amount</th>
-                        <th>Email</th>
-                        <th>Eligibility level</th>
+                        <th>Customer email</th>
+                        <th>Reference</th>
+                        <th>Type</th>
                         <th>Status</th>
                         <th>Date Requested</th>
-                        <th data-orderable="false">Actions</th>
-                        <th data-orderable="false">others</th>
+                        <th data-orderable="false">Action</th>
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($pendingLoans as $request)
+                    @foreach($transactions as $transaction)
                         <tr>
-                            <td>{{ $request->user_id }}</td>
-                            <td>{{ $request->amount }}</td>
-                            <td>{{ $request->email }}</td>
-                            <td>{{ $request->loan_eligible_id }}</td>
-                            <td><span class="{{$request->status === 'successful' ? 'badge badge-success': 'badge badge-secondary' }}">{{$request->status}}</span></td>  
-                            <td>{{ $request->created_at->format('jS F, Y') }}</td>
-                            <td class="text">
-                            <button type="submit" onclick="return confirm('Are you sure? you want  to  approve  this  loan??')"  class="btn btn-outline-primary view_details">
-                                                        <span id="btn-text">Approve loan</span>
-                                                        </button>
+                            <td>{{ $transaction->user->email }}</td>
+                            <td>{{ $transaction->reference }}</td>
+                            <td>{{ $transaction->type }}</td>
+                            <td><span class="{{$transaction->status === 'successful' ? 'badge badge-success': 'badge badge-secondary' }}">{{$transaction->status}}</span></td>  
+                            <td>{{ $transaction->created_at->format('jS F, Y') }}</td>
                     
-                            </td>
                             <td class="text-center">
                                 <div class="list-icons">
                                     <div class="dropdown">
@@ -67,9 +59,9 @@
                                         </a>
 
                                         <div class="dropdown-menu dropdown-menu-right">
-                                            <a href="{{ route('loan.show', $request->id) }}"
+                                            <a href="{{ route('transaction.show', $transaction->id) }}"
                                                class="dropdown-item">
-                                                <i class="icon-eye"></i> View
+                                                <i class="icon-eye"></i> View transaction details
                                             </a>
                                         </div>
                                     </div>

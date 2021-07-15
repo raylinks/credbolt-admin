@@ -2,24 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
-use App\Models\LoanRequest;
 use App\Models\Transaction;
 use App\Http\Controllers\Controller;
 use App\Http\Actions\ProcessLoanAction;
 
-class UserController extends Controller
+class TransactionController extends Controller
 {
     public function index()
     {
-        $users = User::all();
+        $transactions = Transaction::with('user')->get();
      
-        return view('admin.user-management.index', compact('users'));
+        return view('admin.transactions.index', compact('transactions'));
     }
 
     public function show($user)
     {
-        $user = User::findOrFail($user);
+        $user = Transaction::findOrFail($user);
       
         return view('admin.user-management.show', compact('user'));
     }

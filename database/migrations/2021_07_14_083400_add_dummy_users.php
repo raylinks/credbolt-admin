@@ -14,9 +14,10 @@ class AddDummyUsers extends Migration
     public function up()
     {
         DB::transaction(function () {
+            $now = now()->toDateTimeString();
             DB::table('users')->insert([
-                ['username' => env('ADMIN_USERNAME', 'admin') , 'email' => env('ADMIN_EMAIL', 'admin@gmail.com'), 
-                'password' => Hash::make('password')],
+                ['username' => env('ADMIN_USERNAME', 'admin') , 'name' => 'admin','email' => env('ADMIN_EMAIL', 'admin@gmail.com'), 
+                'password' => Hash::make('password'),  'created_at' => $now, 'updated_at' => $now]
 
             ]);
             DB::table('user_profiles')->insert([

@@ -2,9 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProcessLoanController;
+use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\Auth\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,21 +24,38 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-//Route::view('/dashboard', 'admin.index')->name('dashboard');
+Route::view('/dashboard', 'admin.index')->name('dashboard');
 
-Route::view('dashboard', 'admin.index');
+//Route::view('dashboard', 'admin.index');
 
 Route::view('/', 'admin.index')->name('dashboard');
+Route::get('register', [RegisterController::class, 'index'])->name('register');
+
+Route::post('register', [RegisterController::class, 'register'])->name('register');
 
 //Auth routes
 Route::middleware('auth')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('home');
     Route::post('logout', [AuthController::class, 'logout'])->name('auth.logout')->middleware('auth');
+    Route::get('admin/users', [AdminController::class, 'index'])->name('admin.users');
+    Route::get('admin/users/{user}', [AdminController::class, 'show'])->name('admin.users.show');
 
+
+    Route::prefix('user')->name('user.')->group(function () {
+        Route::get('/customer', [UserController::class, 'index'])->name('index');
+        Route::get('/customer/show/{user}', [UserController::class, 'show'])->name('show');
+    });
+
+
+    Route::prefix('transaction')->name('transaction.')->group(function () {
+        Route::get('/', [TransactionController::class, 'index'])->name('index');
+        Route::get('/customer/show/{user}', [UserController::class, 'show'])->name('show');
+    });
 
 
     Route::prefix('customer')->name('customer.')->group(function () {
     Route::get('/registered/users', [UserController::class, 'index'])->name('index');
+    Route::get('/registered/users/{user}', [UserController::class, 'show'])->name('show');
     });
 
 Route::prefix('loan')->name('loan.')->group(function () {

@@ -1,14 +1,14 @@
 @extends('layouts.dashboard')
 
-@section('title', 'Loan requests')
+@section('title', 'Registered customers')
 
-@section('header', 'Loan Requests')
+@section('header', 'Registered customers')
 
 @section('page-title')
     <div class="page-header">
         <div class="page-header-content header-elements-md-inline">
             <div class="page-title d-flex">
-                <h2 class="font-weight-semibold">Loan Requests</h2>
+                <h2 class="font-weight-semibold">Active users </h2>
             </div>
         </div>
     </div>
@@ -21,7 +21,7 @@
                 <a href="{{ route('home') }}" class="breadcrumb-item">
                     <i class="icon-home2 mr-2"></i> Home
                 </a>
-                <span class="breadcrumb-item active">Loan Requests</span>
+                <span class="breadcrumb-item active">All customers</span>
             </div>
         </div>
     </div>
@@ -34,31 +34,22 @@
                 <table class="table datatable-basic table-hover">
                     <thead>
                     <tr>
-                        <th>Fullname</th>
-                        <th>Amount</th>
+                        <th>Name</th>
+                        <th>Username</th>
                         <th>Email</th>
-                        <th>Eligibility level</th>
-                        <th>Status</th>
+                        <th>Role level</th>
                         <th>Date Requested</th>
                         <th data-orderable="false">Actions</th>
-                        <th data-orderable="false">others</th>
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($pendingLoans as $request)
+                    @foreach($users as $request)
                         <tr>
-                            <td>{{ $request->user_id }}</td>
-                            <td>{{ $request->amount }}</td>
+                            <td>{{ $request->name }}</td>
+                            <td>{{ $request->username }}</td>
                             <td>{{ $request->email }}</td>
-                            <td>{{ $request->loan_eligible_id }}</td>
-                            <td><span class="{{$request->status === 'successful' ? 'badge badge-success': 'badge badge-secondary' }}">{{$request->status}}</span></td>  
+                            <td></td>
                             <td>{{ $request->created_at->format('jS F, Y') }}</td>
-                            <td class="text">
-                            <button type="submit" onclick="return confirm('Are you sure? you want  to  approve  this  loan??')"  class="btn btn-outline-primary view_details">
-                                                        <span id="btn-text">Approve loan</span>
-                                                        </button>
-                    
-                            </td>
                             <td class="text-center">
                                 <div class="list-icons">
                                     <div class="dropdown">
@@ -67,7 +58,7 @@
                                         </a>
 
                                         <div class="dropdown-menu dropdown-menu-right">
-                                            <a href="{{ route('loan.show', $request->id) }}"
+                                            <a href="{{ route('admin.users.show', $request->id) }}"
                                                class="dropdown-item">
                                                 <i class="icon-eye"></i> View
                                             </a>

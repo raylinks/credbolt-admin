@@ -53,15 +53,18 @@
 
             <!-- Content area -->
             <div class="content pt-0">
-                <!-- Alert component -->
-             
+              <!-- Alert component -->
+              @if (session('type'))
+                    <x-alert/>
+                @endif
                 <!-- /Alert component -->
 
                 <!-- Validation errors -->
-              
+                @if (session('errors'))
+                    <x-validation-errors/>
+                @endif
                 <!-- /Validation errors -->
 
-                <!-- @yield('content') -->
                 @yield('content')
             </div>
             <!-- /content area -->

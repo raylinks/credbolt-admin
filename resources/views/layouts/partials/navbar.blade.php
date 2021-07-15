@@ -4,13 +4,13 @@
     <div class="navbar-header navbar-dark d-none d-md-flex align-items-md-center">
         <div class="navbar-brand navbar-brand-md">
             <a href="" class="d-inline-block">
-                <img src="" alt="PB">
+                <img src="{{ asset('creditwolf.png') }}" alt="PB">
             </a>
         </div>
 
         <div class="navbar-brand navbar-brand-xs">
             <a href="" class="d-inline-block">
-                <img src="" alt="PB">
+                <img src="{{ asset('creditwolf.png') }}" alt="PB">
             </a>
         </div>
     </div>
@@ -54,13 +54,14 @@
                 <a href="#" class="navbar-nav-link d-flex align-items-center dropdown-toggle" data-toggle="dropdown">
                     <img src="global_assets/images/placeholders/placeholder.jpg" class="rounded-circle mr-2" height="34"
                         alt="">
-                    <span class="text-capitalize"></span>
+                    <span class="text-capitalize">{{auth()->user()->username}}</span>
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-right">
                     <a href="#" class="dropdown-item"><i class="icon-user"></i> My profile</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="" onclick="">
+                    <a class="dropdown-item" href="{{ route('auth.logout') }}" onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();">
                         Logout
                     </a>
                 </div>

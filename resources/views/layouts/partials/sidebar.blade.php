@@ -23,7 +23,7 @@
                 <div class="media">
                     <div class="mr-3">
                         <a href="#">
-                            <img src="{{ asset('global_assets/images/placeholders/placeholder.jpg') }}" width="38"
+                            <img src="{{ asset('global_assets/images/creditwolf.png') }}" width="38"
                                 height="38" class="rounded-circle" alt="">
                         </a>
                     </div>
@@ -49,18 +49,29 @@
                 
                 <li class="nav-item nav-item-submenu">
                     <a href="" class="nav-link" id="business">
-                        <i class="icon-briefcase"></i> <span>Customers</span>
+                        <i class="icon-cube3"></i> <span>Users Management</span>
                     </a>
 
                     <ul class="nav nav-group-sub" data-submenu-title="Businesses">
                         <li class="nav-item">
-                              <a href="{{ route('customer.index')}}" class="nav-link">View users</a> 
+                              <a href="{{ route('user.index')}}" class="nav-link">View users</a> 
                         </li>
                     </ul>
                 </li>
                 <li class="nav-item nav-item-submenu">
                     <a href="" class="nav-link" id="business">
-                        <i class="icon-briefcase"></i> <span>Loan requests</span>
+                        <i class="icon-briefcase"></i> <span>Manage Admin Roles</span>
+                    </a>
+
+                    <ul class="nav nav-group-sub" data-submenu-title="Businesses">
+                        <li class="nav-item">
+                              <a href="{{ route('admin.users')}}" class="nav-link">View users</a> 
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item nav-item-submenu">
+                    <a href="" class="nav-link" id="business">
+                        <i class="icon-cash"></i> <span>Loan requests</span>
                     </a>
 
                     <ul class="nav nav-group-sub" data-submenu-title="Businesses">
@@ -71,12 +82,12 @@
                 </li>
                 <li class="nav-item nav-item-submenu">
                     <a href="" class="nav-link" id="business">
-                        <i class="icon-briefcase"></i> <span>Transactions</span>
+                        <i class="icon-graph"></i> <span>Transactions</span>
                     </a>
 
                     <ul class="nav nav-group-sub" data-submenu-title="Businesses">
                         <li class="nav-item">
-                              <a href="{{ route('loan.index')}}" class="nav-link">View loans</a> 
+                              <a href="{{ route('transaction.index')}}" class="nav-link">View all</a> 
                         </li>
                     </ul>
                 </li>

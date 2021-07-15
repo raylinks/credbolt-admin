@@ -8,7 +8,7 @@
         <div class="card mb-0 shadow p-3">
             <div class="card-body">
                 <div class="text-center mb-3">
-                    <img src="{{ asset('global_assets/images/patricia.png') }}" style="width: 70%" class="my-3">
+                    <img src="{{ asset('global_assets/images/creditwolf.png') }}" style="width: 70%" class="my-3">
                     <span class="d-block text-muted mb-4">LOGIN INTO YOUR ACCOUNT</span>
                     @if(session('success'))
                         <span class="text-success my-4">{{ session('success') }}</span>
