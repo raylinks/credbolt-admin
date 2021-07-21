@@ -9,6 +9,12 @@ $username = $DATABASE_URL["user"];
 $password = $DATABASE_URL["pass"];
 $database = substr($DATABASE_URL["path"], 1);
 
+$api_host = $API_DB_URL["host"];
+$api_username = $API_DB_URL["username"];
+$api_password = $API_DB_URL["password"];
+$api_database   = substr($API_DB_URL["path"], 1);
+
+
 return [
 
     /*
@@ -73,11 +79,11 @@ return [
         'credbolt_api' => [
             'driver' => 'mysql',
             'url' => env('API_DATABASE_URL'),
-            'host' => env('API_DB_HOST', '127.0.0.1'),
+            'host' => $api_host ,
             'port' => env('API_DB_PORT', '3306'),
-            'database' => env('API_DB_DATABASE', 'forge'),
-            'username' => env('API_DB_USERNAME', 'forge'),
-            'password' => env('API_DB_PASSWORD', ''),
+            'database' => $api_database ,
+            'username' => $api_username,
+            'password' => $api_password,
             'unix_socket' => env('API_DB_SOCKET', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
@@ -99,11 +105,15 @@ return [
             'database' => $database ,
             'username' => $username ,
             'password' => $password,
-            'charset' => 'utf8',
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
             'prefix' => '',
             'prefix_indexes' => true,
-            'schema' => 'public',
-            'sslmode' => 'prefer',
+            'strict' => true,
+            'engine' => null,
+            'options' => extension_loaded('pdo_mysql') ? array_filter([
+                PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
+            ]) : [],
         ],
 
         'credapidb' => [
