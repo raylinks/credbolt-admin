@@ -10,8 +10,8 @@ $password = $DATABASE_URL["pass"];
 $database = substr($DATABASE_URL["path"], 1);
 
 $api_host = $API_DB_URL["host"];
-$api_username = $API_DB_URL["username"];
-$api_password = $API_DB_URL["password"];
+$api_username = $API_DB_URL["user"];
+$api_password = $API_DB_URL["pass"];
 $api_database   = substr($API_DB_URL["path"], 1);
 
 
