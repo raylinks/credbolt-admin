@@ -2,7 +2,12 @@
 
 use Illuminate\Support\Str;
 
-//$DATABASE_URL=parse_url(env('DATABASE_URL'));
+$DATABASE_URL=parse_url(env('CLEARDB_GREEN_URL'));
+$API_DB_URL = parse_url(env('API_DATABASE_URL'));
+$host = $DATABASE_URL["host"];
+$username = $DATABASE_URL["user"];
+$password = $DATABASE_URL["pass"];
+$database = substr($DATABASE_URL["path"], 1);
 
 return [
 
@@ -86,23 +91,23 @@ return [
         ],
 
 
-        // 'pgsql' => [
-        //     'driver' => 'pgsql',
-        //     'url' => env('DATABASE_URL'),
-        //     'host' => $DATABASE_URL["host"],
-        //     'port' => $DATABASE_URL["port"],
-        //     'database' => ltrim($DATABASE_URL["path"], "/"),
-        //     'username' => $DATABASE_URL["user"],
-        //     'password' => $DATABASE_URL["pass"],
-        //     'charset' => 'utf8',
-        //     'prefix' => '',
-        //     'prefix_indexes' => true,
-        //     'schema' => 'public',
-        //     'sslmode' => 'prefer',
-        // ],
+        'live_admin_db' => [
+            'driver' => 'mysql',
+            'url' => env('CLEARDB_GREEN_URL'),
+            'host' => $host,
+            'port' => "3306",
+            'database' => $database ,
+            'username' => $username ,
+            'password' => $password,
+            'charset' => 'utf8',
+            'prefix' => '',
+            'prefix_indexes' => true,
+            'schema' => 'public',
+            'sslmode' => 'prefer',
+        ],
 
         'credapidb' => [
-            'driver' => 'pgsql',
+            'driver' => 'mysql',
             'url' => env('API_DATABASE_URL'),
             'host' => env('API_DB_HOST', '127.0.0.1'),
             'port' => env('API_DB_PORT', '5432'),
