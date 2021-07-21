@@ -20,9 +20,9 @@ class AddDummyUsers extends Migration
                 'password' => Hash::make('password'),  'created_at' => $now, 'updated_at' => $now]
 
             ]);
-            DB::table('user_profiles')->insert([
-                ['user_id' =>'1', 'role_id' => 1]
-                ]);
+            // DB::table('user_profiles')->insert([
+            //     ['user_id' =>'1', 'role_id' => 1]
+            //     ]);
         });
     }
 
