@@ -44,7 +44,7 @@
                 </a>
             </li>
         </ul>
-        <form id="logout-form" action="" method="POST" style="display: none;">
+        <form id="logout-form" action="{{ route('auth.logout') }}" method="POST" style="display: none;">
             @csrf
         </form>
         <span class="badge bg-white badge-pill ml-md-3 mr-md-auto">&nbsp;</span>
