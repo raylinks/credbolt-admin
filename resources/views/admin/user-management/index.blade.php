@@ -50,7 +50,7 @@
                             <td>{{ $request->last_name }}</td>
                             <td>{{ $request->email }}</td>
                             <td>{{ $request->eligible_amount }}</td>
-                            <td>{{$request->registration_completed}}</td>
+                            <td>{{$request->registration_completed == '1' ? 'Verified' :  'Not-verified'}}</td>
                             <td>{{ $request->created_at->format('jS F, Y') }}</td>
                             <td class="text-center">
                                 <div class="list-icons">

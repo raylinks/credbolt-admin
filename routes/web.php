@@ -40,6 +40,7 @@ Route::middleware('auth')->group(function () {
     Route::post('logout', [AuthController::class, 'logout'])->name('auth.logout')->middleware('auth');
     Route::get('admin/users', [AdminController::class, 'index'])->name('admin.users');
     Route::get('admin/users/{user}', [AdminController::class, 'show'])->name('admin.users.show');
+    Route::post('{user}/admin/users', [AdminController::class, 'update'])->name('admin.update');
 
 
     Route::prefix('user')->name('user.')->group(function () {

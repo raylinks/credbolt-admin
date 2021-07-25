@@ -17,9 +17,9 @@ class TransactionController extends Controller
 
     public function show($user)
     {
-        $user = Transaction::findOrFail($user);
+        $transactions = Transaction::findOrFail($user);
       
-        return view('admin.user-management.show', compact('user'));
+        return view('admin.transactions.show', compact('transactions'));
     }
 
    

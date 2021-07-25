@@ -58,12 +58,12 @@
                                             <i class="icon-menu9"></i>
                                         </a>
 
-                                        <div class="dropdown-menu dropdown-menu-right">
+                                        <!-- <div class="dropdown-menu dropdown-menu-right">
                                             <a href="{{ route('transaction.show', $transaction->id) }}"
                                                class="dropdown-item">
                                                 <i class="icon-eye"></i> View transaction details
                                             </a>
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </div>
                             </td>

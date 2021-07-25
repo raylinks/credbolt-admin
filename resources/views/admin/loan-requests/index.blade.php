@@ -35,7 +35,7 @@
                     <thead>
                     <tr>
                         <th>Fullname</th>
-                        <th>Amount</th>
+                        <th>Requested Amount</th>
                         <th>Email</th>
                         <th>Eligibility level</th>
                         <th>Status</th>
@@ -47,15 +47,18 @@
                     <tbody>
                     @foreach($pendingLoans as $request)
                         <tr>
-                            <td>{{ $request->user_id }}</td>
+                            <td>{{ $request->user->last_name }}</td>
                             <td>{{ $request->amount }}</td>
-                            <td>{{ $request->email }}</td>
-                            <td>{{ $request->loan_eligible_id }}</td>
+                            <td>{{ $request->user->email }}</td>
+                            <td>{{ $request->user->eligible_amount }}</td>
                             <td><span class="{{$request->status === 'successful' ? 'badge badge-success': 'badge badge-secondary' }}">{{$request->status}}</span></td>  
                             <td>{{ $request->created_at->format('jS F, Y') }}</td>
                             <td class="text">
                             <button type="submit" onclick="return confirm('Are you sure? you want  to  approve  this  loan??')"  class="btn btn-outline-primary view_details">
                                                         <span id="btn-text">Approve loan</span>
+                                                        </button>
+                                                        <button type="submit" onclick="return confirm('Are you sure? you want  to  decline  this  loan??')"  class="btn btn-outline-primary view_details">
+                                                        <span id="btn-text">Decline loan</span>
                                                         </button>
                     
                             </td>
@@ -66,12 +69,12 @@
                                             <i class="icon-menu9"></i>
                                         </a>
 
-                                        <div class="dropdown-menu dropdown-menu-right">
+                                        <!-- <div class="dropdown-menu dropdown-menu-right">
                                             <a href="{{ route('loan.show', $request->id) }}"
                                                class="dropdown-item">
                                                 <i class="icon-eye"></i> View
                                             </a>
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </div>
                             </td>

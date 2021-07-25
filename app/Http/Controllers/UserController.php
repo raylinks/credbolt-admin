@@ -19,7 +19,7 @@ class UserController extends Controller
 
     public function show($user)
     {
-        $user = User::findOrFail($user);
+        $user = User::with('details')->findOrFail($user);
       
         return view('admin.user-management.show', compact('user'));
     }

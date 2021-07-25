@@ -13,6 +13,8 @@ class User extends Authenticatable
 
 
     protected $connection = 'credbolt_api';
+
+   // protected $connection =  'credapidb';
     /**
      * The attributes that are mass assignable.
      *
@@ -46,5 +48,12 @@ class User extends Authenticatable
     public function transactions()
     {
         return $this->hasMany(Transaction::class);
+    }
+
+  
+
+    public function details()
+    {
+        return $this->hasOne('App\Models\UserDetail');
     }
 }

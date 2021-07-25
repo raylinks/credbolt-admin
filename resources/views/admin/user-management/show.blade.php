@@ -37,10 +37,10 @@
                     </a>
                   
                     <div class="dropdown-menu dropdown-menu-right">
-                        <a href="" class="dropdown-item"><i class="icon-user-lock"></i>FLag Customer</a>
-                        <a href="" class="dropdown-item" ><i class="icon-eye"></i> View customer all transactions</a>
-                        <a href="" class="dropdown-item"><i class="icon-accessibility"></i> Reset customer password</a>
-                        <a href="" class="dropdown-item"><i class="icon-briefcase"></i> Promote customer loan eligibility</a>
+                        <a  class="dropdown-item"><i class="icon-user-lock"></i>FLag Customer</a>
+                        <a  class="dropdown-item" ><i class="icon-eye"></i> View customer all transactions</a>
+                        <!-- <a  class="dropdown-item"><i class="icon-accessibility"></i> Reset customer password</a> -->
+                        <a  class="dropdown-item"><i class="icon-briefcase"></i> Promote customer loan eligibility</a>
                     </div>
                 </div>
             </div>
@@ -58,24 +58,21 @@
 
                 <div class="card-body">
                 <h6>Title:</h6>
-                        <p>{{ $user->title}}</p>
+                        <p>{{ $user->details->title}}</p>
 
                     <hr>
 
                     <h6>Years of employment:</h6>
-                        <p>{{ $user->years_of_employment}}</p>
+                        <p>{{ $user->details->years_of_employment}}</p>
 
                         <hr>
                             <h6>Monthly_income:</h6>
-                        <p>{{ $user->monthly_income}}</p>
+                        <p>#{{ $user->details->monthly_income}}</p>
 
                         <hr>
                     <h6>BVN verification:</h6>
-                    <p>VERIFIED</p>
+                    <p>NOT VERIFIED</p>
 
-                    <hr>
-                    <h6>Blacklist status</h6>
-                    <p>NOT BLACKLISTED</p>
                 </div>
             </div>
         </div>
@@ -85,20 +82,20 @@
                 <div class="card-body">
                         
                         <h6>Date of birth:</h6>
-                        <p>{{ $user->date_of_birth}}</p>
+                        <p>{{ $user->details->date_of_birth}}</p>
 
                         <hr>
                         <h6>Marital status:</h6>
-                        <p>{{ $user->marital_status}}</p>
+                        <p>{{ $user->details->marital_status}}</p>
                         <hr>
                             <h6>Address:</h6>
-                        <p>{{ $user->address}}</p>
+                        <p>{{ $user->details->address}}</p>
                         <hr>
                             <h6>Current employment:</h6>
-                        <p>{{ $user->current_employment}}</p>
+                        <p>{{ $user->details->current_employment}}</p>
                         <hr>
                             <h6>Occupation:</h6>
-                        <p>{{ $user->occupation}}</p>
+                        <p>{{ $user->details->occupation}}</p>
 
                         <hr>
                         <h6>Date Created:</h6>

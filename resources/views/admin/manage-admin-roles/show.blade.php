@@ -33,6 +33,16 @@
     </div>
 @stop
 
+
+@if(session('errors'))
+    @foreach (session('errors') as $error)
+        <p>This is user {{ $error }}</p>
+    @endforeach
+
+   <span class="text-warning my-4">{{ session('errors') }}</span>
+
+@endif
+
 @section('content')
     <div class="row">
         @if(session('error'))
@@ -42,25 +52,40 @@
             <div class="card">
 
                 <div class="card-body">
-                    <h6>Name:</h6>
-                    <p>{{ $user->name }}</p>
-
-                    <hr>
-
-                    <h6>Email:</h6>
-                    <p>{{ $user->email }}</p>
-
-                    <hr>
-                    <h6>Role</h6>
-                    <p></p>
-                    <hr>
-                        <h6>Date Created:</h6>
-                        <p>{{ $user->created_at->format('jS F, Y')}}</p>
-                </div>
-                <div class="d-flex justify-content-start align-items-center">
-                            <a href="" class="btn btn-light">Cancel</a>
-                            <button type="submit" class="btn bg-blue ml-3">Change user role <i class="icon-paperplane ml-2"></i></button>
+                <form action="{{route('admin.update', $user->id)}}" method="POST"  >
+                @csrf
+                        <div class="form-group">
+                            <label>Name:</label>
+                            <input type="text" required value="{{$user->name}}"  class="form-control" name="name"
+                                >
                         </div>
+                    <hr>
+
+                    <div class="form-group">
+                            <label>Email:</label>
+                            <input type="text" required value="{{$user->email}}"  class="form-control" name="email"
+                                >
+                        </div>
+                    <hr>
+                    <div class="form-group">
+                            <label>Role:</label>
+                       
+                            <select class="form-control " style="opacity:1 !important;" name="role" data-fouc>
+                                @foreach ($roles as $role)
+                                    <option value="{{$role->id}}">{{ucwords($role->name)}}</option>
+                                @endforeach
+                            </select>
+            
+                    </select>
+                                
+                        </div>
+                        <div class="d-flex justify-content-start align-items-center">
+                            <a href="" class="btn btn-light">Cancel</a>
+                            <button type="submit" class="btn bg-blue ml-3">UPDATE <i class="icon-paperplane ml-2"></i>
+                            </button>
+                        </div>
+                </form>
+            
             </div>
         </div>
     </div>
