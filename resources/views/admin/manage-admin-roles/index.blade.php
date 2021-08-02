@@ -48,7 +48,7 @@
                             <td>{{ $request->name }}</td>
                             <td>{{ $request->username }}</td>
                             <td>{{ $request->email }}</td>
-                            <td>{{ $request->profile->role_id}}</td>
+                            <td>{{ optional($request->profile)->role_id}}</td>
                             <td>{{ $request->created_at->format('jS F, Y') }}</td>
                             <td class="text-center">
                                 <div class="list-icons">
